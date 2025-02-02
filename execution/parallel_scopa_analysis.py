@@ -22,13 +22,14 @@ def get_successful_game_ids():
     return successful_ids
 
 # Function to process a single game log
-def process_game_log(file_path):
+def process_game_log(file_path, instance_id):
     with open(file_path, 'r') as f:
         game_data = json.load(f)
 
     actions_analysis = []
     for action in game_data:
         analysis = {
+            'instance_id': int(instance_id),
             'player': action.get('player'),
             'action': action.get('action'),
             'hand': action.get('hand'),
@@ -49,10 +50,10 @@ def analyze_successful_games():
     successful_ids = get_successful_game_ids()
     all_analyses = []
 
-    for game_id in successful_ids:
-        file_path = os.path.join(GAME_LOGS_DIR, f'game_logs_{game_id}.json')
+    for instance_id in successful_ids:
+        file_path = os.path.join(GAME_LOGS_DIR, f'game_logs_{instance_id}.json')
         if os.path.exists(file_path):
-            analysis = process_game_log(file_path)
+            analysis = process_game_log(file_path, instance_id)
             all_analyses.extend(analysis)
 
     return all_analyses

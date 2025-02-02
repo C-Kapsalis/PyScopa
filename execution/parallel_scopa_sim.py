@@ -5,9 +5,6 @@ from time import sleep
 import os
 import json  # Added for JSON handling
 
-# Semaphore for thread-safe logging
-log_semaphore = threading.Semaphore()
-
 # Get the absolute path of the current script
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -19,13 +16,11 @@ def run_game(instance_id):
     """Runs the scopa_w_logging.py script with a unique game instance ID."""
     try:
         subprocess.run(['python', scopa_script_path, f'--instance_id={instance_id}'], check=True)
-        with log_semaphore:  # it is != 0, so > 0
-            with open(scopa_log_path, 'a') as log_file:
-                log_file.write(f'Game {instance_id} completed successfully.\n')
+        with open(scopa_log_path, 'a') as log_file:
+            log_file.write(f'Game {instance_id} completed successfully.\n')
     except subprocess.CalledProcessError as e:
-        with log_semaphore:
-            with open(scopa_log_path, 'a') as log_file:
-                log_file.write(f'Game {instance_id} failed with error: {e}\n')
+        with open(scopa_log_path, 'a') as log_file:
+            log_file.write(f'Game {instance_id} failed with error: {e}\n')
 
 def parallel_simulate_games(n_games=10000, max_threads=8):
     threads = []
