@@ -1,0 +1,1010 @@
+[
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "capture",
+        "hand": [
+            "7 of spades",
+            "2 of hearts",
+            "Q of spades"
+        ],
+        "board_before": [
+            "6 of clubs",
+            "2 of spades",
+            "4 of spades",
+            "3 of spades"
+        ],
+        "running_card_value_counts": {
+            "7 of spades": 0,
+            "2 of hearts": 0,
+            "Q of spades": 0
+        },
+        "card_played": "Q of spades",
+        "captured_cards": [
+            "2 of spades",
+            "3 of spades",
+            "4 of spades"
+        ],
+        "board_after": [
+            "6 of clubs"
+        ],
+        "player_1_pile_size": 4,
+        "player_2_pile_size": 0,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "discard",
+        "hand": [
+            "Q of hearts",
+            "5 of clubs",
+            "A of clubs"
+        ],
+        "board_before": [
+            "6 of clubs"
+        ],
+        "running_card_value_counts": {
+            "7 of spades": 0,
+            "2 of hearts": 1
+        },
+        "card_played": "5 of clubs",
+        "captured_cards": null,
+        "board_after": [
+            "6 of clubs",
+            "5 of clubs"
+        ],
+        "player_1_pile_size": 4,
+        "player_2_pile_size": 0,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "discard",
+        "hand": [
+            "7 of spades",
+            "2 of hearts"
+        ],
+        "board_before": [
+            "6 of clubs",
+            "5 of clubs"
+        ],
+        "running_card_value_counts": {
+            "7 of spades": 0,
+            "2 of hearts": 1
+        },
+        "card_played": "7 of spades",
+        "captured_cards": null,
+        "board_after": [
+            "6 of clubs",
+            "5 of clubs",
+            "7 of spades"
+        ],
+        "player_1_pile_size": 4,
+        "player_2_pile_size": 0,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "discard",
+        "hand": [
+            "Q of hearts",
+            "A of clubs"
+        ],
+        "board_before": [
+            "6 of clubs",
+            "5 of clubs",
+            "7 of spades"
+        ],
+        "running_card_value_counts": {
+            "2 of hearts": 1
+        },
+        "card_played": "A of clubs",
+        "captured_cards": null,
+        "board_after": [
+            "6 of clubs",
+            "5 of clubs",
+            "7 of spades",
+            "A of clubs"
+        ],
+        "player_1_pile_size": 4,
+        "player_2_pile_size": 0,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "discard",
+        "hand": [
+            "2 of hearts"
+        ],
+        "board_before": [
+            "6 of clubs",
+            "5 of clubs",
+            "7 of spades",
+            "A of clubs"
+        ],
+        "running_card_value_counts": {
+            "2 of hearts": 1
+        },
+        "card_played": "2 of hearts",
+        "captured_cards": null,
+        "board_after": [
+            "6 of clubs",
+            "5 of clubs",
+            "7 of spades",
+            "A of clubs",
+            "2 of hearts"
+        ],
+        "player_1_pile_size": 4,
+        "player_2_pile_size": 0,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "collect_pile",
+        "hand": [
+            "Q of hearts"
+        ],
+        "board_before": [
+            "6 of clubs",
+            "5 of clubs",
+            "7 of spades",
+            "A of clubs",
+            "2 of hearts"
+        ],
+        "running_card_value_counts": {},
+        "card_played": "Q of hearts",
+        "captured_cards": null,
+        "board_after": [],
+        "player_1_pile_size": 4,
+        "player_2_pile_size": 5,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "discard",
+        "hand": [
+            "Q of diamonds",
+            "7 of clubs",
+            "7 of hearts"
+        ],
+        "board_before": [],
+        "running_card_value_counts": {
+            "Q of diamonds": 1,
+            "7 of clubs": 1,
+            "7 of hearts": 1
+        },
+        "card_played": "7 of clubs",
+        "captured_cards": null,
+        "board_after": [
+            "7 of clubs"
+        ],
+        "player_1_pile_size": 4,
+        "player_2_pile_size": 5,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "discard",
+        "hand": [
+            "4 of hearts",
+            "6 of spades",
+            "K of diamonds"
+        ],
+        "board_before": [
+            "7 of clubs"
+        ],
+        "running_card_value_counts": {
+            "Q of diamonds": 1,
+            "7 of hearts": 1
+        },
+        "card_played": "4 of hearts",
+        "captured_cards": null,
+        "board_after": [
+            "7 of clubs",
+            "4 of hearts"
+        ],
+        "player_1_pile_size": 4,
+        "player_2_pile_size": 5,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "capture",
+        "hand": [
+            "Q of diamonds",
+            "7 of hearts"
+        ],
+        "board_before": [
+            "7 of clubs",
+            "4 of hearts"
+        ],
+        "running_card_value_counts": {
+            "Q of diamonds": 1,
+            "7 of hearts": 1
+        },
+        "card_played": "7 of hearts",
+        "captured_cards": [
+            "7 of clubs"
+        ],
+        "board_after": [
+            "4 of hearts"
+        ],
+        "player_1_pile_size": 6,
+        "player_2_pile_size": 5,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "discard",
+        "hand": [
+            "6 of spades",
+            "K of diamonds"
+        ],
+        "board_before": [
+            "4 of hearts"
+        ],
+        "running_card_value_counts": {
+            "Q of diamonds": 1
+        },
+        "card_played": "K of diamonds",
+        "captured_cards": null,
+        "board_after": [
+            "4 of hearts",
+            "K of diamonds"
+        ],
+        "player_1_pile_size": 6,
+        "player_2_pile_size": 5,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "discard",
+        "hand": [
+            "Q of diamonds"
+        ],
+        "board_before": [
+            "4 of hearts",
+            "K of diamonds"
+        ],
+        "running_card_value_counts": {
+            "Q of diamonds": 1
+        },
+        "card_played": "Q of diamonds",
+        "captured_cards": null,
+        "board_after": [
+            "4 of hearts",
+            "K of diamonds",
+            "Q of diamonds"
+        ],
+        "player_1_pile_size": 6,
+        "player_2_pile_size": 5,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "collect_pile",
+        "hand": [
+            "6 of spades"
+        ],
+        "board_before": [
+            "4 of hearts",
+            "K of diamonds",
+            "Q of diamonds"
+        ],
+        "running_card_value_counts": {},
+        "card_played": "6 of spades",
+        "captured_cards": null,
+        "board_after": [],
+        "player_1_pile_size": 6,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "discard",
+        "hand": [
+            "3 of hearts",
+            "K of spades",
+            "4 of diamonds"
+        ],
+        "board_before": [],
+        "running_card_value_counts": {
+            "3 of hearts": 1,
+            "K of spades": 1,
+            "4 of diamonds": 2
+        },
+        "card_played": "4 of diamonds",
+        "captured_cards": null,
+        "board_after": [
+            "4 of diamonds"
+        ],
+        "player_1_pile_size": 6,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "discard",
+        "hand": [
+            "3 of clubs",
+            "2 of diamonds",
+            "6 of hearts"
+        ],
+        "board_before": [
+            "4 of diamonds"
+        ],
+        "running_card_value_counts": {
+            "3 of hearts": 1,
+            "K of spades": 1
+        },
+        "card_played": "3 of clubs",
+        "captured_cards": null,
+        "board_after": [
+            "4 of diamonds",
+            "3 of clubs"
+        ],
+        "player_1_pile_size": 6,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "capture",
+        "hand": [
+            "3 of hearts",
+            "K of spades"
+        ],
+        "board_before": [
+            "4 of diamonds",
+            "3 of clubs"
+        ],
+        "running_card_value_counts": {
+            "3 of hearts": 1,
+            "K of spades": 1
+        },
+        "card_played": "3 of hearts",
+        "captured_cards": [
+            "3 of clubs"
+        ],
+        "board_after": [
+            "4 of diamonds"
+        ],
+        "player_1_pile_size": 8,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "discard",
+        "hand": [
+            "2 of diamonds",
+            "6 of hearts"
+        ],
+        "board_before": [
+            "4 of diamonds"
+        ],
+        "running_card_value_counts": {
+            "K of spades": 1
+        },
+        "card_played": "6 of hearts",
+        "captured_cards": null,
+        "board_after": [
+            "4 of diamonds",
+            "6 of hearts"
+        ],
+        "player_1_pile_size": 8,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 0,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "capture",
+        "hand": [
+            "K of spades"
+        ],
+        "board_before": [
+            "4 of diamonds",
+            "6 of hearts"
+        ],
+        "running_card_value_counts": {
+            "K of spades": 1
+        },
+        "card_played": "K of spades",
+        "captured_cards": [
+            "6 of hearts",
+            "4 of diamonds"
+        ],
+        "board_after": [],
+        "player_1_pile_size": 11,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 1,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "collect_pile",
+        "hand": [
+            "2 of diamonds"
+        ],
+        "board_before": [],
+        "running_card_value_counts": {},
+        "card_played": "2 of diamonds",
+        "captured_cards": null,
+        "board_after": [],
+        "player_1_pile_size": 11,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 1,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "discard",
+        "hand": [
+            "Q of clubs",
+            "5 of spades",
+            "J of clubs"
+        ],
+        "board_before": [],
+        "running_card_value_counts": {
+            "Q of clubs": 2,
+            "5 of spades": 1,
+            "J of clubs": 0
+        },
+        "card_played": "J of clubs",
+        "captured_cards": null,
+        "board_after": [
+            "J of clubs"
+        ],
+        "player_1_pile_size": 11,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 1,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "discard",
+        "hand": [
+            "5 of diamonds",
+            "2 of clubs",
+            "A of spades"
+        ],
+        "board_before": [
+            "J of clubs"
+        ],
+        "running_card_value_counts": {
+            "Q of clubs": 2,
+            "5 of spades": 1
+        },
+        "card_played": "5 of diamonds",
+        "captured_cards": null,
+        "board_after": [
+            "J of clubs",
+            "5 of diamonds"
+        ],
+        "player_1_pile_size": 11,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 1,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "capture",
+        "hand": [
+            "Q of clubs",
+            "5 of spades"
+        ],
+        "board_before": [
+            "J of clubs",
+            "5 of diamonds"
+        ],
+        "running_card_value_counts": {
+            "Q of clubs": 2,
+            "5 of spades": 1
+        },
+        "card_played": "5 of spades",
+        "captured_cards": [
+            "5 of diamonds"
+        ],
+        "board_after": [
+            "J of clubs"
+        ],
+        "player_1_pile_size": 13,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 1,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "discard",
+        "hand": [
+            "2 of clubs",
+            "A of spades"
+        ],
+        "board_before": [
+            "J of clubs"
+        ],
+        "running_card_value_counts": {
+            "Q of clubs": 2
+        },
+        "card_played": "A of spades",
+        "captured_cards": null,
+        "board_after": [
+            "J of clubs",
+            "A of spades"
+        ],
+        "player_1_pile_size": 13,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 1,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "capture",
+        "hand": [
+            "Q of clubs"
+        ],
+        "board_before": [
+            "J of clubs",
+            "A of spades"
+        ],
+        "running_card_value_counts": {
+            "Q of clubs": 2
+        },
+        "card_played": "Q of clubs",
+        "captured_cards": [
+            "A of spades",
+            "J of clubs"
+        ],
+        "board_after": [],
+        "player_1_pile_size": 16,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 2,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "collect_pile",
+        "hand": [
+            "2 of clubs"
+        ],
+        "board_before": [],
+        "running_card_value_counts": {},
+        "card_played": "2 of clubs",
+        "captured_cards": null,
+        "board_after": [],
+        "player_1_pile_size": 16,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 2,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "discard",
+        "hand": [
+            "J of spades",
+            "A of hearts",
+            "J of diamonds"
+        ],
+        "board_before": [],
+        "running_card_value_counts": {
+            "J of spades": 1,
+            "A of hearts": 2,
+            "J of diamonds": 1
+        },
+        "card_played": "J of spades",
+        "captured_cards": null,
+        "board_after": [
+            "J of spades"
+        ],
+        "player_1_pile_size": 16,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 2,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "discard",
+        "hand": [
+            "5 of hearts",
+            "6 of diamonds",
+            "A of diamonds"
+        ],
+        "board_before": [
+            "J of spades"
+        ],
+        "running_card_value_counts": {
+            "A of hearts": 2,
+            "J of diamonds": 1
+        },
+        "card_played": "A of diamonds",
+        "captured_cards": null,
+        "board_after": [
+            "J of spades",
+            "A of diamonds"
+        ],
+        "player_1_pile_size": 16,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 2,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "capture",
+        "hand": [
+            "A of hearts",
+            "J of diamonds"
+        ],
+        "board_before": [
+            "J of spades",
+            "A of diamonds"
+        ],
+        "running_card_value_counts": {
+            "A of hearts": 2,
+            "J of diamonds": 1
+        },
+        "card_played": "J of diamonds",
+        "captured_cards": [
+            "J of spades"
+        ],
+        "board_after": [
+            "A of diamonds"
+        ],
+        "player_1_pile_size": 18,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 2,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "discard",
+        "hand": [
+            "5 of hearts",
+            "6 of diamonds"
+        ],
+        "board_before": [
+            "A of diamonds"
+        ],
+        "running_card_value_counts": {
+            "A of hearts": 2
+        },
+        "card_played": "5 of hearts",
+        "captured_cards": null,
+        "board_after": [
+            "A of diamonds",
+            "5 of hearts"
+        ],
+        "player_1_pile_size": 18,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 2,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "capture",
+        "hand": [
+            "A of hearts"
+        ],
+        "board_before": [
+            "A of diamonds",
+            "5 of hearts"
+        ],
+        "running_card_value_counts": {
+            "A of hearts": 2
+        },
+        "card_played": "A of hearts",
+        "captured_cards": [
+            "A of diamonds"
+        ],
+        "board_after": [
+            "5 of hearts"
+        ],
+        "player_1_pile_size": 20,
+        "player_2_pile_size": 8,
+        "player_1_scopas": 2,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "collect_pile",
+        "hand": [
+            "6 of diamonds"
+        ],
+        "board_before": [
+            "5 of hearts"
+        ],
+        "running_card_value_counts": {},
+        "card_played": "6 of diamonds",
+        "captured_cards": null,
+        "board_after": [],
+        "player_1_pile_size": 20,
+        "player_2_pile_size": 9,
+        "player_1_scopas": 2,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "discard",
+        "hand": [
+            "K of clubs",
+            "J of hearts",
+            "3 of diamonds"
+        ],
+        "board_before": [],
+        "running_card_value_counts": {
+            "K of clubs": 2,
+            "J of hearts": 3,
+            "3 of diamonds": 3
+        },
+        "card_played": "K of clubs",
+        "captured_cards": null,
+        "board_after": [
+            "K of clubs"
+        ],
+        "player_1_pile_size": 20,
+        "player_2_pile_size": 9,
+        "player_1_scopas": 2,
+        "player_2_scopas": 0,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "capture",
+        "hand": [
+            "4 of clubs",
+            "7 of diamonds",
+            "K of hearts"
+        ],
+        "board_before": [
+            "K of clubs"
+        ],
+        "running_card_value_counts": {
+            "J of hearts": 3,
+            "3 of diamonds": 3
+        },
+        "card_played": "K of hearts",
+        "captured_cards": [
+            "K of clubs"
+        ],
+        "board_after": [],
+        "player_1_pile_size": 20,
+        "player_2_pile_size": 11,
+        "player_1_scopas": 2,
+        "player_2_scopas": 1,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "discard",
+        "hand": [
+            "J of hearts",
+            "3 of diamonds"
+        ],
+        "board_before": [],
+        "running_card_value_counts": {
+            "J of hearts": 3,
+            "3 of diamonds": 3
+        },
+        "card_played": "J of hearts",
+        "captured_cards": null,
+        "board_after": [
+            "J of hearts"
+        ],
+        "player_1_pile_size": 20,
+        "player_2_pile_size": 11,
+        "player_1_scopas": 2,
+        "player_2_scopas": 1,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "discard",
+        "hand": [
+            "4 of clubs",
+            "7 of diamonds"
+        ],
+        "board_before": [
+            "J of hearts"
+        ],
+        "running_card_value_counts": {
+            "3 of diamonds": 3
+        },
+        "card_played": "4 of clubs",
+        "captured_cards": null,
+        "board_after": [
+            "J of hearts",
+            "4 of clubs"
+        ],
+        "player_1_pile_size": 20,
+        "player_2_pile_size": 11,
+        "player_1_scopas": 2,
+        "player_2_scopas": 1,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 1,
+        "action": "discard",
+        "hand": [
+            "3 of diamonds"
+        ],
+        "board_before": [
+            "J of hearts",
+            "4 of clubs"
+        ],
+        "running_card_value_counts": {
+            "3 of diamonds": 3
+        },
+        "card_played": "3 of diamonds",
+        "captured_cards": null,
+        "board_after": [
+            "J of hearts",
+            "4 of clubs",
+            "3 of diamonds"
+        ],
+        "player_1_pile_size": 20,
+        "player_2_pile_size": 11,
+        "player_1_scopas": 2,
+        "player_2_scopas": 1,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "collect_pile",
+        "hand": [
+            "7 of diamonds"
+        ],
+        "board_before": [
+            "J of hearts",
+            "4 of clubs",
+            "3 of diamonds"
+        ],
+        "running_card_value_counts": {},
+        "card_played": "7 of diamonds",
+        "captured_cards": null,
+        "board_after": [],
+        "player_1_pile_size": 20,
+        "player_2_pile_size": 14,
+        "player_1_scopas": 2,
+        "player_2_scopas": 1,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    },
+    {
+        "instance_id": 53,
+        "player": 2,
+        "action": "collect_pile",
+        "hand": [
+            "7 of diamonds"
+        ],
+        "board_before": [
+            "J of hearts",
+            "4 of clubs",
+            "3 of diamonds"
+        ],
+        "running_card_value_counts": {},
+        "card_played": "7 of diamonds",
+        "captured_cards": null,
+        "board_after": [],
+        "player_1_pile_size": 20,
+        "player_2_pile_size": 14,
+        "player_1_scopas": 2,
+        "player_2_scopas": 1,
+        "final_player_1_score": 5,
+        "final_player_2_score": 1
+    }
+]

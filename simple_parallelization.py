@@ -1,6 +1,10 @@
 import os
 import subprocess
 from time import sleep
+import json
+import threading
+
+
 
 # Define script directory
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -9,14 +13,21 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 GAME_SCRIPT = os.path.join(script_dir, 'simulation/scopa_w_logging.py')
 SIMULATION_LOG = os.path.join(script_dir, 'execution/scopa_simulation.log')
 GAME_LOGS_DIR = os.path.join(script_dir, '/logs/')
-ANALYSIS_LOG = os.path.join(script_dir, 'scopa_analysis.log')
+# ANALYSIS_LOG = os.path.join(script_dir, 'scopa_analysis.log')
 
-# # Ensure directories exist
-# os.makedirs(os.path.dirname(SIMULATION_LOG), exist_ok=True)
-# os.makedirs(os.path.dirname(ANALYSIS_LOG), exist_ok=True)
-# os.makedirs(GAME_LOGS_DIR, exist_ok=True)
-import os
-import json
+# Buffer setup
+BUFSIZE = 100
+buffer = [-1] * BUFSIZE
+nextin = 0  # this is because games have been numbered starting from 1
+nextout = 0  # same
+
+# Number of simulation-analysis pairs to run
+NITEMS = 100
+
+mutex = threading.Lock()
+empty = threading.Semaphore(BUFSIZE)
+full = threading.Semaphore(0)
+
 
 def save_game_log(instance_id, game_log):
     log_dir = 'logs'
@@ -45,6 +56,8 @@ def run_game(instance_id):
     with open(SIMULATION_LOG, 'a') as log_file:
         log_file.write(log_message)
 
+    return f"logs/game_logs_{instance_id}.json"
+
 
 
 
@@ -67,6 +80,8 @@ def process_game_log(instance_id):
             'hand': action.get('hand'),
             'board_before': action.get('board_before'),
             'running_card_value_counts': action.get('card_value_counts'),
+            'card_played': action.get('card_played'),
+            'captured_cards': action.get('captured_cards', None), 
             'board_after': action.get('board_after'),
             'player_1_pile_size': action.get('running_player_1_pile_size'),
             'player_2_pile_size': action.get('running_player_2_pile_size'),
@@ -81,7 +96,45 @@ def process_game_log(instance_id):
     with open(analysis_log_file, 'w') as f:
         json.dump(actions_analysis, f, indent=4)
 
+    return f"logs/game_logs_{instance_id}.json"
+
+
+def simulation():
+    global nextin
+    global buffer
+    for instance_id in range(NITEMS):
+        empty.acquire()
+        mutex.acquire()
+        run_game(instance_id)
+        buffer[nextin] = instance_id
+        print(f'Producer: produced {instance_id} in slot {nextin}')
+        nextin = (nextin + 1) % BUFSIZE
+        mutex.release()
+        full.release()
+
+
+def analysis():
+    global nextout
+    global buffer
+    for i in range(NITEMS):
+        full.acquire()
+        mutex.acquire()
+        instance_id = buffer[nextout]
+        process_game_log(instance_id)
+        print(f'Consumer: consumed {instance_id} from slot {nextout}')
+        nextout = (nextout + 1) % BUFSIZE
+        mutex.release()
+        empty.release()
+
+
+
 
 if __name__ == "__main__":
-    run_game(1)
-    process_game_log(1)
+    t1 = threading.Thread(target=simulation)
+    t2 = threading.Thread(target=analysis)
+
+    t1.start()
+    t2.start()
+
+    t1.join()
+    t2.join()

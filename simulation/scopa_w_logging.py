@@ -410,33 +410,33 @@ def game(instance_id=0):  #log_file='game_logs.json'):
         
 
 
-    print('Player 1 got', player_1_score, 'points.\n')
+    # print('Player 1 got', player_1_score, 'points.\n')
 
-    print('Player 1 point breakdown:\n')
-    print('Points from Scopas Scored:', player_1_pile.scopas)
-    print('Has more pile cards in total:', len(player_1_pile.cards) > len(player_2_pile.cards))
-    print('Got the Sette Bello:', any(card.rank == '7' and card.suit == 'diamonds' for card in player_1_pile.cards))
-    print('Higher primiera score:', p1_primiera_score > p2_primiera_score)
-    print('More diamonds in their pile:', len([card for card in player_1_pile.cards if card.suit == 'diamonds']) > len([card for card in player_2_pile.cards if card.suit == 'diamonds']))
-    print('\n\n')
+    # print('Player 1 point breakdown:\n')
+    # print('Points from Scopas Scored:', player_1_pile.scopas)
+    # print('Has more pile cards in total:', len(player_1_pile.cards) > len(player_2_pile.cards))
+    # print('Got the Sette Bello:', any(card.rank == '7' and card.suit == 'diamonds' for card in player_1_pile.cards))
+    # print('Higher primiera score:', p1_primiera_score > p2_primiera_score)
+    # print('More diamonds in their pile:', len([card for card in player_1_pile.cards if card.suit == 'diamonds']) > len([card for card in player_2_pile.cards if card.suit == 'diamonds']))
+    # print('\n\n')
 
-    print('Player 2 got', player_2_score, 'points.\n')
+    # print('Player 2 got', player_2_score, 'points.\n')
 
-    print('Player 2 point breakdown:\n')
-    print('Points from Scopas Scored:', player_2_pile.scopas)
-    print('Has more pile cards in total:', len(player_2_pile.cards) > len(player_1_pile.cards))
-    print('Got the Sette Bello:', any(card.rank == '7' and card.suit == 'diamonds' for card in player_2_pile.cards))
-    print('Higher primiera score:', p2_primiera_score > p1_primiera_score)
-    print('More diamonds in their pile:', len([card for card in player_2_pile.cards if card.suit == 'diamonds']) > len([card for card in player_1_pile.cards if card.suit == 'diamonds']))
-    print('\n\n')
+    # print('Player 2 point breakdown:\n')
+    # print('Points from Scopas Scored:', player_2_pile.scopas)
+    # print('Has more pile cards in total:', len(player_2_pile.cards) > len(player_1_pile.cards))
+    # print('Got the Sette Bello:', any(card.rank == '7' and card.suit == 'diamonds' for card in player_2_pile.cards))
+    # print('Higher primiera score:', p2_primiera_score > p1_primiera_score)
+    # print('More diamonds in their pile:', len([card for card in player_2_pile.cards if card.suit == 'diamonds']) > len([card for card in player_1_pile.cards if card.suit == 'diamonds']))
+    # print('\n\n')
 
 
-    if player_1_score > player_2_score:
-        print('Player 1 wins!')
-    elif player_1_score < player_2_score:
-        print('Player 2 wins!')
-    else:
-        print('Tie!')
+    # if player_1_score > player_2_score:
+    #     print('Player 1 wins!')
+    # elif player_1_score < player_2_score:
+    #     print('Player 2 wins!')
+    # else:
+    #     print('Tie!')
 
 
 if __name__ == "__main__":
