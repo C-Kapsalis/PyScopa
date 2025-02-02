@@ -141,14 +141,6 @@ class Player:
     def __init__(self, idvalue):
         assert type(idvalue) == int, "invalid - non integer player id value attempted"
         self.idvalue = idvalue
-        self.score = 0
-
-    def update_player_score(self, score):
-        assert type(score) == int, "non-integer score value"
-        self.score += score
-
-    def is_winner(self):
-        return self.score >= 12
 
     def __str__(self):
         return f"Player {self.idvalue} has a current score of {self.score}."
@@ -194,16 +186,21 @@ class PlayerAction:
 
 
 def calculate_primiera(pile):
-    primiera_values = {'7': 21, '6': 18, '5': 16, '4': 14, '3': 13, '2': 12, 'A': 11, 'J': 10, 'Q': 10, 'K': 10}
-    suits = ['diamonds', 'hearts', 'spades', 'clubs']
-    best_cards = {suit: 0 for suit in suits}
+    primiera_values = {
+        '7': 21, '6': 18, 'A': 16, '5': 15, '4': 14, '3': 13, '2': 12,
+        'K': 10, 'J': 10, 'Q': 10
+    }
+    suits = {'clubs': 0, 'diamonds': 0, 'hearts': 0, 'spades': 0}
 
     for card in pile:
-        value = primiera_values.get(card.rank, 0)
-        if value > best_cards[card.suit]:
-            best_cards[card.suit] = value
+        if card.rank in primiera_values:
+            suits[card.suit] = max(suits[card.suit], primiera_values[card.rank])
 
-    return sum(best_cards.values())
+    primiera_sum = sum(suits.values())
+    suits_covered = sum(1 for value in suits.values() if value > 0)
+
+    return primiera_sum, suits_covered
+
 
 
 def game():
@@ -264,32 +261,54 @@ def game():
 
         current_player = 2 if current_player == 1 else 1
 
+    ### Primiera concerns
+    player_1_primiera, player_1_suits = calculate_primiera(player_1_pile)
+    player_2_primiera, player_2_suits = calculate_primiera(player_2_pile)
+
+    def primiera_score(p1_suits, p2_suits, p1_value, p2_value):
+        if p1_suits == 4 and p2_suits < 4:
+            return 1, 0
+        elif p2_suits == 4 and p1_suits < 4:
+            return 0, 1
+        elif p1_suits > p2_suits:
+            return 1, 0
+        elif p2_suits > p1_suits:
+            return 0, 1
+        else:  # both have the same number of suits
+            if p1_value > p2_value:
+                return 1, 0
+            elif p2_value > p1_value:
+                return 0, 1
+            else:
+                return 0, 0  # tie
+
+    p1_primiera_score, p2_primiera_score = primiera_score(player_1_suits, player_2_suits, player_1_primiera, player_2_primiera)
+
+
     player_1_score = sum([
         len(player_1_pile) > len(player_2_pile),
         any(card.rank == '7' and card.suit == 'diamonds' for card in player_1_pile),
-        len([card for card in player_1_pile if card.rank == '7']) > len([card for card in player_2_pile if card.rank == '7']),
-        calculate_primiera(player_1_pile) > calculate_primiera(player_2_pile)
+        len([card for card in player_1_pile if card.suit == 'diamonds']) > len([card for card in player_2_pile if card.suit == 'diamonds']),
+        p1_primiera_score > p2_primiera_score
     ])
 
     player_2_score = sum([
         len(player_2_pile) > len(player_1_pile),
         any(card.rank == '7' and card.suit == 'diamonds' for card in player_2_pile),
-        len([card for card in player_2_pile if card.rank == '7']) > len([card for card in player_1_pile if card.rank == '7']),
-        calculate_primiera(player_2_pile) > calculate_primiera(player_1_pile)
+        len([card for card in player_2_pile if card.suit == 'diamonds']) > len([card for card in player_1_pile if card.suit == 'diamonds']),
+        p2_primiera_score > p1_primiera_score
     ])
 
-    player_1.update_player_score(player_1_score)
-    player_2.update_player_score(player_2_score)
 
     print('Player 1 got', player_1_score, 'points')
     print('Player 2 got', player_2_score, 'points')
 
-    if player_1.is_winner():
-        print("Player 1 has won!")
-    elif player_2.is_winner():
-        print("Player 2 has won!")
+    if player_1_score > player_2_score:
+        print('Player 1 wins!')
+    elif player_1_score < player_2_score:
+        print('Player 2 wins!')
     else:
-        print(f"Final Scores - Player 1: {player_1.score}, Player 2: {player_2.score}")
+        print('Tie!')
 
 
 
