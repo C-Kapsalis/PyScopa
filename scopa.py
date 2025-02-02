@@ -192,7 +192,7 @@ def calculate_primiera(pile):
     }
     suits = {'clubs': 0, 'diamonds': 0, 'hearts': 0, 'spades': 0}
 
-    for card in pile:
+    for card in pile.cards:
         if card.rank in primiera_values:
             suits[card.suit] = max(suits[card.suit], primiera_values[card.rank])
 
@@ -208,8 +208,8 @@ def game():
     player_1 = Player(idvalue=1)
     player_2 = Player(idvalue=2)
 
-    player_1_pile = []
-    player_2_pile = []
+    player_1_pile = PlayerPile()
+    player_2_pile = PlayerPile()
     board = deck.deal_hand(4)
 
     player_1_hand = deck.deal_hand(3)
@@ -233,13 +233,16 @@ def game():
             elif action == 'collect_pile':
                 card = choice(player_1_hand.cards)
                 player_1_hand.play_card(card)
-                player_1_pile += board.cards
+                player_1_pile.add_cards_to_pile(board.cards)
                 board = Hand([])
             else:
                 card, captured_cards = action
                 player_1_hand.play_card(card)
+                if len(board.cards) == len(captured_cards):  # Scopa condition
+                    player_1_pile.scopas_score()
+
                 board = Hand([c for c in board.cards if c not in captured_cards])
-                player_1_pile += [card] + captured_cards
+                player_1_pile.add_cards_to_pile([card] + captured_cards)
         else:
             actions = PlayerAction(current_player, player_2_hand, board, player_1_hand).available_actions()
             action = choice(actions)
@@ -251,13 +254,15 @@ def game():
             elif action == 'collect_pile':
                 card = choice(player_2_hand.cards)
                 player_2_hand.play_card(card)
-                player_2_pile += board.cards
+                player_2_pile.add_cards_to_pile(board.cards)
                 board = Hand([])
             else:
                 card, captured_cards = action
                 player_2_hand.play_card(card)
+                if len(board.cards) == len(captured_cards):  # Scopa condition
+                    player_2_pile.scopas_score()
                 board = Hand([c for c in board.cards if c not in captured_cards])
-                player_2_pile += [card] + captured_cards
+                player_2_pile.add_cards_to_pile([card] + captured_cards)
 
         current_player = 2 if current_player == 1 else 1
 
@@ -286,22 +291,39 @@ def game():
 
 
     player_1_score = sum([
-        len(player_1_pile) > len(player_2_pile),
-        any(card.rank == '7' and card.suit == 'diamonds' for card in player_1_pile),
-        len([card for card in player_1_pile if card.suit == 'diamonds']) > len([card for card in player_2_pile if card.suit == 'diamonds']),
+        len(player_1_pile.cards) > len(player_2_pile.cards),
+        any(card.rank == '7' and card.suit == 'diamonds' for card in player_1_pile.cards),
+        len([card for card in player_1_pile.cards if card.suit == 'diamonds']) > len([card for card in player_2_pile.cards if card.suit == 'diamonds']),
         p1_primiera_score > p2_primiera_score
-    ])
+    ]) + player_1_pile.scopas
 
     player_2_score = sum([
-        len(player_2_pile) > len(player_1_pile),
-        any(card.rank == '7' and card.suit == 'diamonds' for card in player_2_pile),
-        len([card for card in player_2_pile if card.suit == 'diamonds']) > len([card for card in player_1_pile if card.suit == 'diamonds']),
+        len(player_2_pile.cards) > len(player_1_pile.cards),
+        any(card.rank == '7' and card.suit == 'diamonds' for card in player_2_pile.cards),
+        len([card for card in player_2_pile.cards if card.suit == 'diamonds']) > len([card for card in player_1_pile.cards if card.suit == 'diamonds']),
         p2_primiera_score > p1_primiera_score
-    ])
+    ]) + player_2_pile.scopas
 
+    print('Player 1 got', player_1_score, 'points.\n')
 
-    print('Player 1 got', player_1_score, 'points')
-    print('Player 2 got', player_2_score, 'points')
+    print('Player 1 point breakdown:\n')
+    print('Points from Scopas Scored:', player_1_pile.scopas)
+    print('Has more pile cards in total:', len(player_1_pile.cards) > len(player_2_pile.cards))
+    print('Got the Sette Bello:', any(card.rank == '7' and card.suit == 'diamonds' for card in player_1_pile.cards))
+    print('Higher primiera score:', p1_primiera_score > p2_primiera_score)
+    print('More diamonds in their pile:', len([card for card in player_1_pile.cards if card.suit == 'diamonds']) > len([card for card in player_2_pile.cards if card.suit == 'diamonds']))
+    print('\n\n')
+
+    print('Player 2 got', player_2_score, 'points.\n')
+
+    print('Player 2 point breakdown:\n')
+    print('Points from Scopas Scored:', player_2_pile.scopas)
+    print('Has more pile cards in total:', len(player_2_pile.cards) > len(player_1_pile.cards))
+    print('Got the Sette Bello:', any(card.rank == '7' and card.suit == 'diamonds' for card in player_2_pile.cards))
+    print('Higher primiera score:', p2_primiera_score > p1_primiera_score)
+    print('More diamonds in their pile:', len([card for card in player_2_pile.cards if card.suit == 'diamonds']) > len([card for card in player_1_pile.cards if card.suit == 'diamonds']))
+    print('\n\n')
+
 
     if player_1_score > player_2_score:
         print('Player 1 wins!')
