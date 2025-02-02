@@ -10,40 +10,38 @@ import threading
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # File paths
-GAME_SCRIPT = os.path.join(script_dir, 'simulation/scopa_w_logging.py')
-SIMULATION_LOG = os.path.join(script_dir, 'execution/scopa_simulation.log')
-GAME_LOGS_DIR = os.path.join(script_dir, '/logs/')
+GAME_SCRIPT = os.path.join(script_dir, '../simulation_basis/scopa_w_logging.py')
+SIMULATION_LOG = os.path.join(script_dir, '../execution/scopa_simulation.log')
+GAME_LOGS_DIR = os.path.join(script_dir, '../logs/')
 # ANALYSIS_LOG = os.path.join(script_dir, 'scopa_analysis.log')
 
 # Buffer setup
 BUFSIZE = 100
-buffer = [-1] * BUFSIZE
+buffer = [-1] * BUFSIZE  # the buffer is a shared resource
 nextin = 0  # this is because games have been numbered starting from 1
 nextout = 0  # same
 
 # Number of simulation-analysis pairs to run
 NITEMS = 100
 
-mutex = threading.Lock()
-empty = threading.Semaphore(BUFSIZE)
-full = threading.Semaphore(0)
+mutex = threading.Lock()  # lock assuring mutual exclusion - only one thread can modify the buffer at a time
+empty = threading.Semaphore(BUFSIZE)  # tracks empty slots in the buffer (aka further game simulations that can take place)
+full = threading.Semaphore(0)  # tracks full slots in the buffer (aka further game analyses that can take place)
 
+# Ensure the logs directory exists
+os.makedirs('logs', exist_ok=True)
 
-def save_game_log(instance_id, game_log):
-    log_dir = 'logs'
-    log_file = f'{log_dir}/game_logs_{instance_id}.json'
-
-    # Ensure the directory exists
-    os.makedirs(log_dir, exist_ok=True)
+def initialize_game_log(instance_id):
+    log_file = f'../logs/game_logs_{instance_id}.json'
 
     # Now write the log
     with open(log_file, 'w') as f:
-        json.dump(game_log, f, indent=4)
+        json.dump(None, f, indent=4)
 
 
 def run_game(instance_id):
     """Runs the scopa_w_logging.py script with a unique game instance ID."""
-    save_game_log(instance_id, None)
+    initialize_game_log(instance_id)
 
     try:
         # Run the game script with the provided instance ID
@@ -56,15 +54,14 @@ def run_game(instance_id):
     with open(SIMULATION_LOG, 'a') as log_file:
         log_file.write(log_message)
 
-    return f"logs/game_logs_{instance_id}.json"
 
 
 
 
 # Function to process a single game log
 def process_game_log(instance_id):
-    game_log_path = os.path.join(script_dir, f'logs/game_logs_{instance_id}.json')
-    
+    game_log_path = os.path.join(script_dir, GAME_LOGS_DIR + f'game_logs_{instance_id}.json')
+    sleep(0.1)
     with open(game_log_path, 'r') as f:
         game_data = json.load(f)
 
@@ -82,6 +79,7 @@ def process_game_log(instance_id):
             'running_card_value_counts': action.get('card_value_counts'),
             'card_played': action.get('card_played'),
             'captured_cards': action.get('captured_cards', None), 
+            'cards_collected': action.get('cards_collected', None),
             'board_after': action.get('board_after'),
             'player_1_pile_size': action.get('running_player_1_pile_size'),
             'player_2_pile_size': action.get('running_player_2_pile_size'),
@@ -92,22 +90,22 @@ def process_game_log(instance_id):
         }
         actions_analysis.append(analysis)
 
-    analysis_log_file = f'logs/game_{instance_id}_analysis.json'
+    analysis_log_file = GAME_LOGS_DIR + f'game_{instance_id}_analysis.json'
     with open(analysis_log_file, 'w') as f:
         json.dump(actions_analysis, f, indent=4)
 
-    return f"logs/game_logs_{instance_id}.json"
+    
 
 
 def simulation():
     global nextin
     global buffer
     for instance_id in range(NITEMS):
-        empty.acquire()
-        mutex.acquire()
+        empty.acquire()  # decreases the `empty` semaphore - this would make the simulation/`producer` thread to wait in case the buffer is full
+        mutex.acquire()  # ensures that only a single simulation/`producer` thread would be able to 
         run_game(instance_id)
         buffer[nextin] = instance_id
-        print(f'Producer: produced {instance_id} in slot {nextin}')
+        # print(f'Producer: produced {instance_id} in slot {nextin}')
         nextin = (nextin + 1) % BUFSIZE
         mutex.release()
         full.release()
@@ -121,7 +119,7 @@ def analysis():
         mutex.acquire()
         instance_id = buffer[nextout]
         process_game_log(instance_id)
-        print(f'Consumer: consumed {instance_id} from slot {nextout}')
+        # print(f'Consumer: consumed {instance_id} from slot {nextout}')
         nextout = (nextout + 1) % BUFSIZE
         mutex.release()
         empty.release()

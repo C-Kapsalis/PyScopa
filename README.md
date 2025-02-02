@@ -11,15 +11,13 @@
 ```
 PyScopa/
 ├── execution/
-│   ├── parallel_scopa_proc.py      # Processes game logs concurrently
-│   └── parallel_scopa_sim.py       # Simulates multiple games concurrently
+│   ├── simple_parallelization.py   # Processes and analyzes game logs concurrently
+│   └── scopa_simulation.log            # Log file for simulation activities
 ├── simulation/
 │   ├── scopa_simple.py             # Basic Scopa simulation
 │   └── scopa_w_logging.py          # Advanced simulation with detailed logging
-├── logs/                           # Stores game logs
-├── game_analysis_results.json      # Processed results from simulations
-├── scopa_processing.log            # Log file for data processing activities
-├── scopa_simulation.log            # Log file for simulation activities
+├── logs/                           # Stores game logs (logs of simulations / logs of analyses)
+├── analysis/                       # Stores algos used to aggregate insights from processed game logs to identify strategic patterns.
 └── README.md                       # Project overview
 ```
 
@@ -39,29 +37,19 @@ PyScopa/
 
 ### 2. **Execution Module (`execution/`)**
 
-- **`parallel_scopa_sim.py`**:
-  - Runs multiple simulations in parallel using Python's `threading` module.
-  - Manages simulation instances with unique IDs.
+- **`simple_parallelization.py`**:
+  - Runs multiple simulations and game analyses in parallel using Python's `threading` module.
+  - Manages simulation/analysis instances with unique IDs.
   - Dynamically adjusts the file paths to ensure compatibility across environments.
 
-- **`parallel_scopa_proc.py`**:
-  - Monitors and processes simulation logs.
-  - Uses semaphores for thread-safe logging and queue management.
-  - Reads `scopa_simulation.log` to verify completed simulations before processing.
 
 ### 3. **Logs and Data**
 
 - **`logs/` Directory**:
-  - Contains JSON files generated from each simulation (e.g., `game_logs_1.json`).
+  - Contains JSON files generated from each simulation and game analysis (e.g., `game_logs_1.json`, `game_logs_1_analysis.json`).
 
 - **`scopa_simulation.log`**:
   - Records the success or failure of each simulation.
-
-- **`scopa_processing.log`**:
-  - Tracks the status of data processing tasks.
-
-- **`game_analysis_results.json`**:
-  - Aggregates insights from processed game logs to identify strategic patterns.
 
 ---
 
@@ -84,15 +72,10 @@ PyScopa/
 ## Processing Workflow
 
 1. **Simulation:**
-   - Run `parallel_scopa_sim.py` to start multiple games.
-   - Each simulation outputs a JSON log and updates `scopa_simulation.log`.
+   - Run `parallel_scopa_sim.py` to start and analyze multiple games.
+   - Each simulation outputs a JSON log and updates `scopa_simulation.log` and the `logs` folder.
 
-2. **Processing:**
-   - Run `parallel_scopa_proc.py` to process logs.
-   - Reads the queue from `processing_queue.log`.
-   - Extracts key insights (action efficiency, winning patterns).
-
-3. **Analysis:**
+2. **Analysis:**
    - Processed data is stored in `game_analysis_results.json`.
    - Used for statistical analysis to derive optimal strategies.
 
@@ -111,12 +94,12 @@ PyScopa/
 
 ### Run Simulations
 ```bash
-python execution/parallel_scopa_sim.py
+python execution/simple_parallelization.py
 ```
 
-### Process Game Logs
+### Analyze results
 ```bash
-python execution/parallel_scopa_proc.py
+python analysis/???
 ```
 
 ---
